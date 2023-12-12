@@ -1,3 +1,6 @@
+#pip install python-whois
+#get domain name information
+
 import whois
 domain = input("Enter your domain: ")
 domain_info = whois.whois(domain)
