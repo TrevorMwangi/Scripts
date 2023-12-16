@@ -1,3 +1,6 @@
+#Simple quiz game on the terminal
+
+
 print("Welcome to my computer quiz!")
 
 playing = input("Do you want to play? ")
