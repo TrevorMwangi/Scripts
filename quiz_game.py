@@ -2,14 +2,14 @@ print("Welcome to my computer quiz!")
 
 playing = input("Do you want to play? ")
 
-if playing != "yes":
+if playing.lower() != "yes":
     quit()
 
 print("Okay lets play!")
 
 #question 1
 answer = input("What is the capital city of Kenya? ")
-if answer == "Nairobi":
+if answer.lower() == "nairobi":
     print("Correct!")
 else:
     print("Incorrect")
@@ -17,7 +17,7 @@ else:
 
 #question 2
 answer = input("Who wrote the 48 Laws of Power? ")
-if answer == "Robert Greene":
+if answer.lower() == "robert greene":
     print("Correct!")
 else:
     print("Incorrect")
@@ -25,7 +25,7 @@ else:
 
 #question 3
 answer = input("In Greek mythology, who is the god of thunder? ")
-if answer == "Zeus":
+if answer.lower() == "zeus":
     print("Correct!")
 else:
     print("Incorrect")
@@ -33,7 +33,7 @@ else:
 
 #question 4
 answer = input("Which famous scientist developed the theory of general relativity? ")
-if answer == "Albert Einstein":
+if answer.lower() == "albert einstein":
     print("Correct!")
 else:
     print("Incorrect")
