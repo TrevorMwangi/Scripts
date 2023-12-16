@@ -1,3 +1,5 @@
+# script that generates elements on the periodic table
+
 import periodictable
 
 Atomic_No = int(input("Enter Element Atomic number: "))
