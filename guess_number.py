@@ -1,6 +1,6 @@
 import random
 
-top_range = input("Type a number: ")
+top_range = input("Type a number to start the game: ")
 
 if top_range.isdigit():
     top_range = int(top_range)
@@ -34,5 +34,6 @@ while True:
     else:
         print("You were below the number!")
 
-print("It only took you", guesses, "guesses")
+print("It only took you", guesses, "guess" if guesses == 1 else "guesses")
+
     
