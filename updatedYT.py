@@ -1,41 +1,52 @@
 from pytube import YouTube
 import tkinter as tk
 from tkinter import filedialog
-import requests
 from tqdm import tqdm
+import requests
+import os
 
 def download_video(url, save_path):
     try:
         yt = YouTube(url)
         streams = yt.streams.filter(progressive=True, file_extension="mp4")
         highest_res_stream = streams.get_highest_resolution()
-        
-        video_url = highest_res_stream.url
-        response = requests.get(video_url, stream=True)
-        
-        # Get video size
+
+        print("Downloading...")
+        response = requests.get(highest_res_stream.url, stream=True)
         total_size = int(response.headers.get('content-length', 0))
-        
-        # Set up progress bar
-        progress_bar = tqdm(total=total_size, unit='B', unit_scale=True, unit_divisor=1024)
 
-        with open(save_path, 'wb') as f:
+        file_name = f"{yt.title}.mp4"
+        file_path = os.path.join(save_path, file_name)
+
+        with open(file_path, 'wb') as file, tqdm(
+                desc=f"{file_name} - {total_size / (1024 * 1024):.2f} MB",
+                total=total_size,
+                unit='B',
+                unit_scale=True,
+                unit_divisor=1024,
+                miniters=1,
+                ncols=140  # Set the width of the progress bar
+        ) as bar:
             for data in response.iter_content(chunk_size=1024):
-                f.write(data)
-                progress_bar.update(len(data))
+                size = file.write(data)
+                bar.update(size)
 
-        # Close the progress bar after download completion
-        progress_bar.close()
-
-        print("Video downloaded successfully!")
+        print("\nVideo downloaded successfully!")
     except Exception as e:
         print(e)
 
 def open_file_dialog():
-    folder = filedialog.askdirectory()
-    if folder:
-        print(f"Selected folder: {folder}")
-    return folder
+    try:
+        folder = filedialog.askdirectory()
+        if folder:
+            print(f"Selected folder: {folder}")
+            return folder
+        else:
+            print("Folder selection canceled. Using the current working directory.")
+            return ""
+    except Exception as e:
+        print(f"An error occurred: {e}. Using the current working directory.")
+        return ""
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -46,6 +57,6 @@ if __name__ == "__main__":
 
     if save_dir:
         print("Started download...")
-        download_video(video_url, save_dir + "/video.mp4")  # Change the file name if needed
+        download_video(video_url, save_dir)
     else:
         print("Invalid save location.")
