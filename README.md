@@ -1,2 +1,4 @@
 # Scripts
- code that does stuff
+ python scripts 
+ terminal executable
+
