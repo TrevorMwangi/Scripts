@@ -10,6 +10,7 @@ if playing.lower() != "yes":
 
 print("Okay lets play!")
 print()
+print()
 score = 0
 
 #question 1
@@ -56,5 +57,5 @@ else:
     print()
 
 print("You got " + str(score) + " questions correct!")
-print("You got " + str((score/4) * 100) + " %.")
+print("That is " + str((score/4) * 100) + " %.")
 print("PLAY AGAIN")
