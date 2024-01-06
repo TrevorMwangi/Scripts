@@ -1,3 +1,5 @@
+# Play rock, paper, scissors with the terminal
+
 import random
 
 user_wins = 0
