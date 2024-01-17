@@ -1,46 +1,52 @@
-# Play rock, paper, scissors with the terminal
+# Two player, Rock/Paper/Scissors
 
-import random
-
-user_wins = 0
-computer_wins = 0
+user1_wins = 0
+user2_wins = 0
 
 options = ["rock", "paper", "scissors"]
 
-
 while True:
-    user_input = input("Type Rock/Paper/Scissors or Q to quit: ").lower()
-    if user_input == "q":
+    user1_input = input("Player 1, type Rock/Paper/Scissors or Q to quit: ").lower()
+    if user1_input == "q":
         break
 
-    if user_input not in options:
+    if user1_input not in options:
+        print("Invalid input. Please try again.")
         continue
 
-    random_number = random.randint(0, 2)
-    #rock: 0, paper: 1, scissors: 2
-    computer_pick = options[random_number]
-    print("Computer picked", computer_pick + ".")
+    user2_input = input("Player 2, type Rock/Paper/Scissors or Q to quit: ").lower()
+    if user2_input == "q":
+        break
 
-    if user_input == "rock" and computer_pick == "scissors":
-        print("You won!")
-        print()
-        user_wins += 1
+    if user2_input not in options:
+        print("Invalid input. Please try again.")
+        continue
 
-    elif user_input == "paper" and computer_pick == "rock":
-        print("You won!")
-        print()
-        user_wins += 1
+    print("Player 1 picked", user1_input + ".")
+    print("Player 2 picked", user2_input + ".")
 
-    elif user_input == "scissors" and computer_pick == "paper":
-        print("You won!")
+    if (
+        (user1_input == "rock" and user2_input == "scissors")
+        or (user1_input == "paper" and user2_input == "rock")
+        or (user1_input == "scissors" and user2_input == "paper")
+    ):
+        print("Player 1 wins!")
         print()
-        user_wins += 1
+        user1_wins += 1
+
+    elif (
+        (user2_input == "rock" and user1_input == "scissors")
+        or (user2_input == "paper" and user1_input == "rock")
+        or (user2_input == "scissors" and user1_input == "paper")
+    ):
+        print("Player 2 wins!")
+        print()
+        user2_wins += 1
 
     else:
-        print("You lost!")
+        print("It's a tie!")
         print()
-        computer_wins += 1
 
-print("You won", user_wins, "times.")
-print("The computer won", computer_wins, "times")
-print("Goodbye!")    
+print("Player 1 won", user1_wins, "times.")
+print("Player 2 won", user2_wins, "times.")
+print("Goodbye!")
