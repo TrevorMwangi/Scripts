@@ -4,7 +4,7 @@ import qrcode
 from PIL import Image
 
 # The data you want to encode in the QR Code
-data = "https://www.facebook.com/"
+data = "https://github.com/TrevorMwangi"
 
 # Generate the QR Code
 qr = qrcode.QRCode(version=1, box_size=10, border=5)
