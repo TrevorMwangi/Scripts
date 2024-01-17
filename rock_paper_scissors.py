@@ -1,5 +1,3 @@
-# Play rock, paper, scissors with the terminal
-
 import random
 
 user_wins = 0
@@ -8,17 +6,28 @@ tied_games = 0
 
 options = ["rock", "paper", "scissors"]
 
+def print_stats():
+    print("Current Stats:")
+    print("You won", user_wins, "time" if user_wins == 1 else "times")
+    print("The computer won", computer_wins, "time." if computer_wins == 1 else "times.")
+    print("The game was tied", tied_games, "time." if tied_games == 1 else "times.")
+    print()
 
 while True:
-    user_input = input("Type Rock/Paper/Scissors or Q to quit: ").lower()
+    user_input = input("Type Rock/Paper/Scissors, Stats to check statistics, or Q to quit: ").lower()
+    
     if user_input == "q":
         break
+    
+    if user_input == "stats":
+        print_stats()
+        continue
 
     if user_input not in options:
+        print("Invalid input! Please try again.")
         continue
 
     random_number = random.randint(0, 2)
-    #rock: 0, paper: 1, scissors: 2
     computer_pick = options[random_number]
     print("Computer picked", computer_pick + ".")
 
@@ -38,7 +47,7 @@ while True:
         user_wins += 1
 
     elif user_input == computer_pick:
-        print("It's a tie!!")
+        print("It's a tie!")
         print()
         tied_games += 1
 
@@ -47,7 +56,5 @@ while True:
         print()
         computer_wins += 1
 
-print("You won", user_wins, "times.")
-print("The computer won", computer_wins, "times.")
-print("The game was tied", tied_games, "times.")
-print("Goodbye!")    
+print_stats()
+print("Goodbye!")
