@@ -4,6 +4,7 @@ import random
 
 user_wins = 0
 computer_wins = 0
+tied_games = 0
 
 options = ["rock", "paper", "scissors"]
 
@@ -36,11 +37,17 @@ while True:
         print()
         user_wins += 1
 
+    elif user_input == computer_pick:
+        print("It's a tie!!")
+        print()
+        tied_games += 1
+
     else:
         print("You lost!")
         print()
         computer_wins += 1
 
 print("You won", user_wins, "times.")
-print("The computer won", computer_wins, "times")
+print("The computer won", computer_wins, "times.")
+print("The game was tied", tied_games, "times.")
 print("Goodbye!")    
