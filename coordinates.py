@@ -9,7 +9,7 @@ geolocator = Nominatim(user_agent="geoapiExercises")
 try:
     # Prompt the user to enter a city name
     place = input("Enter city name: ")
-
+ 
     # Attempt to geocode the location
     location = geolocator.geocode(place)
 
