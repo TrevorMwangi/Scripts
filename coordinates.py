@@ -22,5 +22,5 @@ try:
         print("Location not found.")
 
 except Exception as e:
-    # Handle any exceptions gracefully
+    # Handle any exceptions
     print("An error occurred:", e)
