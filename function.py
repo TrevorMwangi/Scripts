@@ -2,7 +2,6 @@ from memory_profiler import profile
 
 @profile
 def my_function():
-    #your code here
     try:
         # Get user input as an integer
         user_input = int(input("Enter a number: "))
@@ -16,4 +15,5 @@ def my_function():
     except ValueError:
         print("Invalid input. Please enter a valid integer.")
 
-    my_function()
+# Call the function outside its definition
+my_function()
