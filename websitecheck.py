@@ -23,4 +23,4 @@ if __name__ == "__main__":
             else:
                 print(f"{website_url} is NOT a secure website!")
         except:
-            print("Invalid URL format. Try again!")
+            print("Invalid URL format. Try again!!")
