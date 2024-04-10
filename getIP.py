@@ -20,6 +20,7 @@ while True:
         print("Country: " + values.get("country", "N/A"))
         print("Location: " + values.get("loc", "N/A"))
         print("ISP: " + values.get("org", "N/A"))
+        print()
 
     except Exception as e:
         print("An error occurred:", e)
