@@ -26,5 +26,7 @@ while True:
 
     choice = input("Do you want to check another IP? (yes/no):  ")
     if choice.lower() != "yes":
+        if choice.lower() == "no":
+            print("Bye!!")
 
         break
