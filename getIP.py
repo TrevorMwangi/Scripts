@@ -2,23 +2,29 @@ import os
 import urllib.request as urllib2
 import json
 
-
+# While loop to continuously prompt the user for the target IP
 while True:
     ip = input("What is your target IP:  ")
-    url = "http://ip.api.com/json/"
+    url = f"http://ipinfo.io/{ip}/json"
 
-    response = urllib2.urlopen(url + ip)
+    try:
+        # Send a request to the API to retrieve the geolocation info
+        response = urllib2.urlopen(url + ip)
 
-    data = response.read()
+        data = response.read()
+        values = json.loads(data)
 
-    values = json.loads(data)
+        print("IP: " + values["ip"])
+        print("City: " + values.get("city", "N/A"))
+        print("Region: " + values.get("region", "N/A"))
+        print("Country: " + values.get("country", "N/A"))
+        print("Location: " + values.get("loc", "N/A"))
+        print("ISP: " + values.get("org", "N/A"))
 
-    print("IP: " + values["query"])
-    print("City: " + values["city"])
-    print("ISP: " + values["isp"])
-    print("Country: " + values["country"])
-    print("Region: " + values["region"])
-    print("Timezone: " + values["timezone"])
+    except Exception as e:
+        print("An error occurred:", e)
 
-    # Exit the loop after printing information once
-    break
+    choice = input("Do you want to check another IP? (yes/no):  ")
+    if choice.lower() != "yes":
+
+        break
